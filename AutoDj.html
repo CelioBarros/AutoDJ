@@ -3,15 +3,35 @@
 
 <head>
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+
 </head>
 
 <body>
 
-<h1>Auto Dj</h1>
+<h1>DJ Anallytics</h1>
 
 <p>Crie sua lista de músicas de forma automatica.</p>
 
-<input type="text" id="campo" size=50>
-<button> Adicionar usuário</button>
+<form name="checkListForm">
+    <input type="text" name="checkListItem"/>
+</form>
+<button id="button">Adicionar Amiguinho</button>
+
+<!--<input type="text" id="campo" size=50>-->
+<!--<button id="bbb"> Adicionar usuário</button>-->
+<br/>
+<div class="list"></div>
+
+<br/>
+<br/>
+<br/>
+<button id="gerarLista">Gerar Playlist!</button>
 </body>
 </html>
+
+
