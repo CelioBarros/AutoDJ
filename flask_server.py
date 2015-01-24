@@ -5,7 +5,7 @@ import playlistmaker
 app = Flask(__name__)
 
 
-@app.route('/<usuarios>', methods=['GET', 'POST'])
+@app.route('/<usuarios>')
 def lista_musicas(usuarios):
 	response = playlistmaker.makeplaylist(str(usuarios))
 	response = make_response(response)

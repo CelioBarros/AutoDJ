@@ -16,7 +16,7 @@ $(document).ready(function () {
     $('#gerarLista').click(function(){
 
         $.ajax({
-            type: "POST",
+            type: "GET",
             url: "http://localhost:5002/["+usuarios +"]"
         }).done(function (o){
             alert("criando a lista perfeita");
