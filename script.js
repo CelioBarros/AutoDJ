@@ -19,7 +19,8 @@ $(document).ready(function () {
             type: "GET",
             url: "http://localhost:5002/["+usuarios +"]"
         }).done(function (o){
-            alert("criando a lista perfeita");
+            alert("criando a lista perfeita"),
+            location.href="http://localhost:5002/["+usuarios +"]";
         });
 
         for(var i = 0; i < usuarios.length ; i++) {
