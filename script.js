@@ -4,7 +4,7 @@ $(document).ready(function () {
         var toAdd = $('input[name=checkListItem]').val();
         $(".list").append('<div class="item">' + toAdd + '</div>');
         $("input[name=checkListItem], textarea").val("");
-        usuarios.push(toAdd);
+        usuarios.push('"' + toAdd + '"');
 
 
     });
@@ -17,8 +17,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: "http://localhost:5002/"+usuarios,
-            data: { param: usuarios}
+            url: "http://localhost:5002/["+usuarios +"]"
         }).done(function (o){
             alert("criando a lista perfeita");
         });
