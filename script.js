@@ -17,7 +17,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: "flask_server.py",
+            url: "http://localhost:5002/"+usuarios,
             data: { param: usuarios}
         }).done(function (o){
             alert("criando a lista perfeita");
