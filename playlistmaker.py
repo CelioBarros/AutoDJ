@@ -4,10 +4,12 @@ import os.path
 import random
 import urllib
 
+from setmap import setmap
+
 def makeplaylist(list):
     usuarios = json.loads(list)
-    track_count = {}
-    artist_count = {}
+    song_map = setmap()
+    artist_map = setmap()
 
     savelocally = False
 
@@ -15,67 +17,74 @@ def makeplaylist(list):
     con = httplib.HTTPConnection("ws.audioscrobbler.com")
 
     for usuario in usuarios:
-        print "Requisitando dados de"+" "+usuario
+        print "Requisitando dados de "+usuario
         
-        if savelocally and os.path.isfile(usuario+".json"):
-            file = open(usuario+".json")
+        if savelocally and os.path.isfile("local/"+usuario+".json"):
+            file = open("local/"+usuario+".json")
             res = json.loads(file.read())
             file.close()
         else:
             con.request("GET", "/2.0?method=user.getTopTracks&format=json&api_key="+key+"&user="+usuario+"&period=overall&limit=200")
             res = json.loads(con.getresponse().read())
-            #file = open(usuario+".json", "w")
-            #file.write(json.dumps(res))
-            #file.close()
-      
-        for track in res["toptracks"]["track"]:
-            artistname = track["artist"]["name"]
-            musica = (artistname, track["name"])
-            
-            if musica not in track_count.keys():
-                track_count[musica] = 0
-            track_count[musica] += 1
-            
-            if artistname not in artist_count.keys():
-                artist_count[artistname] = set()
-            artist_count[artistname].add(usuario)
+            if savelocally:
+                if not os.path.exists("local"): os.makedirs("local")
+                file = open("local/"+usuario+".json", "w")
+                file.write(json.dumps(res))
+                file.close()
 
-    playlist = []
-    
-    maxa = 0
-    for s in artist_count.keys():
-        maxa = max(maxa, len(artist_count[s]))    
-    maxt = max(track_count.values())
-    
-    for musica in track_count.keys():
-        pontuacao = 0.60*track_count[musica]/maxt + 0.40*len(artist_count[musica[0]])/maxa
-        playlist.append((musica, pontuacao))
-        
-    playlist.sort(key=lambda tup: -tup[1])
+        try:
+            for track in res["toptracks"]["track"]:
+                artist = track["artist"]["name"]
+                artist_map.add(artist, usuario)
+                song = (artist, track["name"])
+                song_map.add(song, usuario)
+        except: print "Usuario invalido"
+    con.close()
+
+    if len(song_map) == 0:
+        print "Nenhuma musica encontrada"
+        return "[]"
+
+    print "Pontuando musicas"
+
+    scorelist = []
     toplist = []
     
-    for s in playlist:
+    maxa = artist_map.max_count()
+    maxt = song_map.max_count()
+    
+    for song in song_map:
+        pontuacao = 0.60*song_map.count(song)/maxt + 0.40*artist_map.count(song[0])/maxa
+        scorelist.append((song, pontuacao))
+        
+    scorelist.sort(key=lambda tup: -tup[1])
+    
+    for s in scorelist:
         if s[1] >= 0.5:
             toplist.append(s[0])
 
     if len(toplist) > 40:
         toplist = random.sample(toplist, 40)
+    random.shuffle(toplist)
     
-    con.close()
+    print "Recuperando IDs"
+    
     key = "IQRMDIAMCEAQ0APXZ"
     con = httplib.HTTPConnection("developer.echonest.com")
     ids = []
     
     for s in toplist:
-        con.request("GET", "/api/v4/song/search?api_key="+key+"&title="+urllib.quote(s[1].encode('utf-8'), '')+"&artist="+urllib.quote(s[0].encode('utf-8'), '')+"&results=1&bucket=id:spotifyv2-ZZ&bucket=tracks")
+        title = urllib.quote(s[1].encode('utf-8'))
+        artist = urllib.quote(s[0].encode('utf-8'))
+        
+        con.request("GET", "/api/v4/song/search?api_key="+key+"&title="+title+"&artist="+artist+"&results=1&bucket=id:spotify&bucket=tracks")
         res = json.loads(con.getresponse().read())
         
-        if "songs" in res["response"].keys() and len(res["response"]["songs"]) > 0 and len(res["response"]["songs"][0]["tracks"]) > 0:
+        try:
             ids.append(res["response"]["songs"][0]["tracks"][0]["foreign_id"])
-
+        except: pass
     
     con.close()
-    print len(ids)
     return json.dumps(ids)
 
 #makeplaylist("[\"zetareticuliana\", \"joaotargino\"]")
