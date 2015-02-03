@@ -13,32 +13,32 @@
 </head>
 
 <body background="party_bg.jpg">
+<img src="djlogo.png">
+<table>
+	<tr>
+		<td valign="top">
+			<p>Crie a lista de músicas de forma automatica.</p>
 
-<h1>DJ TOPADO</h1>
+			<form name="checkListForm">
+			    <input type="text" name="checkListItem" size="30"/>
+			</form>
+			<button id="button">Adicionar DJ</button>
 
-<p>Crie a lista de músicas de forma automatica.</p>
+			<!--<input type="text" id="campo" size=50>-->
+			<!--<button id="bbb"> Adicionar usuário</button>-->
+			<br/>
+			<div class="list"></div>
 
-<form name="checkListForm">
-    <input type="text" name="checkListItem" size="30"/>
-</form>
-<button id="button">Adicionar DJ</button>
+			<br/>
 
-<!--<input type="text" id="campo" size=50>-->
-<!--<button id="bbb"> Adicionar usuário</button>-->
-<br/>
-<div class="list"></div>
+			<button id="gerarLista">Gerar Playlist!</button>
+		</td>
 
-<br/>
-
-<button id="gerarLista">Gerar Playlist!</button>
-
-<br />
-<br />
-<br />
-<div id="player">
-<iframe id="playlist" src="https://embed.spotify.com/?uri=spotify:trackset:DJ TOPADO:" width="400" height="400" frameborder="0" allowtransparency="true"></iframe>
-<br />
-</div>
+		<td valign="top">
+			<iframe id="playlist" src="https://embed.spotify.com/?uri=spotify:trackset:DJ TOPADO:" width="400" height="400" frameborder="0" allowtransparency="true"></iframe>
+		</td>
+	</tr>
+</table>
 
 </body>
 </html>

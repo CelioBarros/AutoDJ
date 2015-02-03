@@ -1,6 +1,7 @@
-h1 {
-    font-family: fantasy;
-    text-align: center;
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 h2 {
     font-family:arial;
@@ -41,8 +42,7 @@ form {
     color:#5081cc;
 }
 
-#player{
-    margin-left: 35%;
-    margin-right: auto;
-
+table {
+    top: 50%;
+    margin: auto;
 }
