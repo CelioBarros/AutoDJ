@@ -1,48 +1,74 @@
 img {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
 }
-h2 {
-    font-family:arial;
+
+table {
+	margin: auto;
+	border-spacing: 30px;
+}
+
+td {
+	vertical-align: top;
+}
+
+.panel {
+	height: 358px;
+	width: 280px;
+	padding: 10px;
+	vertical-align: top;
+	background-color: #272626;
+	border: 1px solid black;
+	border-radius: 3px;
+}
+
+span {
+	color: #A0A0A0;
+	margin: 10px 0px 15px 0px;
+	display: inline-block;
 }
 
 form {
     display: inline-block;
+    margin-right: 5px;
 }
 
-#button{
+input {
+	border-radius: 3px;
+}
+
+button {
+    font-family: arial;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 3px;
     display: inline-block;
-    height:20px;
-    width:180px;
-    background-color: #302f33;
-    font-family:arial;
-    font-weight:bold;
-    color:#ffffff;
+    border: 2px solid #aaaaaa;
+}
+
+.listWrapper {
+	height: 248px;
+	width: 100%;
+	margin-top: 12px;
+	margin-bottom: 12px;
+	display: inline-block;
+    background-color: #333333;
     border-radius: 5px;
-    text-align:center;
-    margin-top:2px;
+}
+
+#list {
+	display: inline-block;
+	padding: 10px;
+    font-family: Garamond;
+    color: #ffdd00;
+}
+
+#adicionarDJ {
+    background-color: #302f33;
 }
 
 #gerarLista{
-    display: inline-block;
-    height:20px;
-    width:180px;
     background-color: #5081cc;
-    font-family:arial;
-    font-weight:bold;
-    color:#ffffff;
-    border-radius: 5px;
-    text-align:center;
-    margin-top:2px;
-}
-
-.list {
-    font-family:garamond;
-    color:#5081cc;
-}
-
-table {
-    top: 50%;
-    margin: auto;
+	width: 100%;
 }

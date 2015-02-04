@@ -1,9 +1,9 @@
 $(document).ready(function () {
     var usuarios = [];
 
-    $('#button').click(function(){
+    $('#adicionarDJ').click(function(){
         var toAdd = $('input[name=checkListItem]').val();
-        $(".list").append('<div class="item">' + toAdd + '</div>');
+        $("#list").append('<div class="item">' + toAdd + '</div>');
         $("input[name=checkListItem], textarea").val("");
         usuarios.push('"' + toAdd + '"');
 

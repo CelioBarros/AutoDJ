@@ -1,46 +1,42 @@
 <!DOCTYPE html>
+
 <html>
-
-<head>
-<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
-
-    <script src="jquery-1.11.2.min.js"></script>
-    <script src="jquery-1.11.2.js"></script>
-    <script type="text/javascript" src="player.js" charset="UTF-8"></script>
-    <script type="text/javascript" src="script.js" charset="UTF-8"></script>
-
-</head>
-
-<body background="party_bg.jpg">
-<img src="djlogo.png">
-<table>
-	<tr>
-		<td valign="top">
-			<p>Crie a lista de músicas de forma automatica.</p>
-
-			<form name="checkListForm">
-			    <input type="text" name="checkListItem" size="30"/>
-			</form>
-			<button id="button">Adicionar DJ</button>
-
-			<!--<input type="text" id="campo" size=50>-->
-			<!--<button id="bbb"> Adicionar usuário</button>-->
-			<br/>
-			<div class="list"></div>
-
-			<br/>
-
-			<button id="gerarLista">Gerar Playlist!</button>
-		</td>
-
-		<td valign="top">
-			<iframe id="playlist" src="https://embed.spotify.com/?uri=spotify:trackset:DJ TOPADO:" width="400" height="400" frameborder="0" allowtransparency="true"></iframe>
-		</td>
-	</tr>
-</table>
-
-</body>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+	
+	    <script src="jquery-1.11.2.min.js"></script>
+	    <script src="jquery-1.11.2.js"></script>
+	    <script type="text/javascript" src="player.js" charset="UTF-8"></script>
+	    <script type="text/javascript" src="script.js" charset="UTF-8"></script>
+	</head>
+	
+	<body background="party_bg.jpg">
+		<img src="djlogo.png">
+		<table>
+			<tr>
+				<td>
+					<div class="panel">
+						<span>Insira os nomes de usu&#225rio last.fm dos DJs</span>
+			
+						<form name="checkListForm">
+						    <input type="text" name="checkListItem" size="20"/>
+						</form>
+						
+						<button id="adicionarDJ">Adicionar DJ</button>
+						<br/>
+						
+						<div class="listWrapper"><div id="list"></div></div>	
+						<button id="gerarLista">Gerar Playlist!</button>
+					</div>
+				</td>
+		
+				<td>
+					<iframe id="playlist" src="https://embed.spotify.com/?uri=spotify:trackset:PLAYLIST TOPADA:" height="380" frameborder="0" />
+				</td>
+			</tr>
+		</table>
+	</body>
 </html>
 
 
