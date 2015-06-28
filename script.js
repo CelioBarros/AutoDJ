@@ -17,7 +17,7 @@ $(document).ready(function () {
     $('#gerarLista').click(function(){
         //var musicas = ["spotify:track:0gzpfUezy3wdktjC2SD1FY","spotify:track:0oks4FnzhNp5QPTZtoet7c", "spotify:track:3q6TKWVArb6Hm8nVfsiNDu", "spotify:track:3BMNLPH50kY8HkDuwfa60s"];
         //setupPlayer(musicas);
-
+        document.getElementById('txt').innerHTML="Aguarde, criando playlist";
         $.ajax({
             type: "GET",
             url: "http://localhost:5002/["+usuarios +"]"
@@ -32,6 +32,8 @@ $(document).ready(function () {
             //inicia o player com a lista de musicas
             setupPlayer(musicas);
 
+        }).fail(function() {
+            document.getElementById('txt').innerHTML="Impossivel criar playlist no momento, tente novamente.";
         });
 
         for(var i = 0; i < usuarios.length ; i++) {
@@ -72,6 +74,8 @@ $(document).ready(function () {
 
     function setupPlayer (musicas) {
         console.log(musicas);
+        
+        $("#playlist").attr("src","https://embed.spotify.com/?uri=spotify:trackset:PLAYLIST TOPADA:");
 
         var missedPoints = 0;
 
@@ -79,6 +83,7 @@ $(document).ready(function () {
         for(var i = 0; i < musicas.length; i++){
             $("#playlist").attr("src", $("#playlist").attr("src") + musicas[i].split(":")[2] + ",");
         }
+        document.getElementById('txt').innerHTML="";
         //$.each(this.currentPlaylist, function(i, v) {
         //    if (musicas != null) {
         //        $("#playlist").attr("src", $("#playlist").attr("src") + musicas.id.split(":")[2] + ",");

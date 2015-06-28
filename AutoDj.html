@@ -13,29 +13,32 @@
 	
 	<body background="party_bg.jpg">
 		<img src="djlogo.png">
-		<table>
-			<tr>
-				<td>
-					<div class="panel">
-						<span>Insira os nomes de usu&#225rio last.fm dos DJs</span>
+		<h1 id ="txt"></h1>
+		<div >
+			<table>
+				<tr>
+					<td>
+						<div class="panel">
+							<span>Insira os nomes de usuário last.fm dos DJs</span>
+				
+							<form name="checkListForm">
+							    <input type="text" name="checkListItem" size="20"/>
+							</form>
+							
+							<button id="adicionarDJ">Adicionar DJ</button>
+							<br/>
+							
+							<div class="listWrapper"><div id="list"></div></div>	
+							<button id="gerarLista">Gerar Playlist!</button>
+						</div>
+					</td>
 			
-						<form name="checkListForm">
-						    <input type="text" name="checkListItem" size="20"/>
-						</form>
-						
-						<button id="adicionarDJ">Adicionar DJ</button>
-						<br/>
-						
-						<div class="listWrapper"><div id="list"></div></div>	
-						<button id="gerarLista">Gerar Playlist!</button>
-					</div>
-				</td>
-		
-				<td>
-					<iframe id="playlist" src="https://embed.spotify.com/?uri=spotify:trackset:PLAYLIST TOPADA:" height="380" frameborder="0" />
-				</td>
-			</tr>
-		</table>
+					<td>
+						<iframe id="playlist" src="https://embed.spotify.com/?uri=spotify:trackset:PLAYLIST TOPADA:" height="380" frameborder="0" />
+					</td>
+				</tr>
+			</table>
+		</div>
 	</body>
 </html>
 

@@ -72,3 +72,8 @@ button {
     background-color: #5081cc;
 	width: 100%;
 }
+
+#txt{
+	text-align: center;
+	font-family: arial;
+}
