@@ -19,23 +19,41 @@
 				<tr>
 					<td>
 						<div class="panel">
-							<span>Insira os nomes de usuário last.fm dos DJs</span>
+							<span>Insert the lastFM users:</span>
 				
 							<form name="checkListForm">
 							    <input type="text" name="checkListItem" size="20"/>
 							</form>
 							
-							<button id="adicionarDJ">Adicionar DJ</button>
+							<button id="adicionarDJ">Add Dj</button>
 							<br/>
 							
 							<div class="listWrapper"><div id="list"></div></div>	
-							<button id="gerarLista">Gerar Playlist!</button>
+							<button id="gerarLista">Generate Playlist!</button>
 						</div>
 					</td>
 			
 					<td>
-						<iframe id="playlist" src="https://embed.spotify.com/?uri=spotify:trackset:PLAYLIST TOPADA:" height="380" frameborder="0" />
-					</td>
+						
+<div id="ytplayer"></div>
+<script>
+// Load the IFrame Player API code asynchronously.
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/player_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  // Replace the 'ytplayer' element with an <iframe> and
+  // YouTube player after the API code downloads.
+  var player;
+  function onYouTubePlayerAPIReady() {
+    player = new YT.Player('ytplayer', {
+      height: '390',
+      width: '640',
+      videoId: 'M7lc1UVf-VE'
+    });
+  }
+</script>		
 				</tr>
 			</table>
 		</div>
